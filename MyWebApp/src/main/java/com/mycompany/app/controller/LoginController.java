@@ -40,12 +40,12 @@ public class LoginController extends HttpServlet {
                 Customer customer = loginDAO.checkLoginCustomer(user, pass);
                 session.setAttribute("cus", customer);
                 session.setAttribute("userType", "customer");
-                response.sendRedirect("uiMain.jsp");
+                response.sendRedirect("main");
             } else if ("manager".equals(userType)) {
                 Manager manager = loginDAO.checkLoginManager(user, pass);
                 session.setAttribute("manager", manager);
                 session.setAttribute("userType", "manager");
-                response.sendRedirect("uiMain.jsp");
+                response.sendRedirect("main");
             }
         } else {
             request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu!");

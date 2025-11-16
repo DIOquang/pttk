@@ -36,8 +36,7 @@ public class SupplierReceiptsController extends HttpServlet {
         
         // Check if user is manager
         if (!"manager".equals(userType) || manager == null) {
-            request.setAttribute("error", "Access Denied! Only managers can view supplier import receipts.");
-            request.getRequestDispatcher("uiMain.jsp").forward(request, response);
+            response.sendRedirect("main");
             return;
         }
         

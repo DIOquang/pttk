@@ -152,7 +152,7 @@
         <div style="padding-left: 5%; margin-top: 20px;">
             <p style="font-size: 16px; color: #ccc;">
                 Chưa có tài khoản? 
-                <a href="register.jsp" style="color: #1d90f5; text-decoration: none; font-weight: 600;">Đăng ký ngay</a>
+                <a href="register" style="color: #1d90f5; text-decoration: none; font-weight: 600;">Đăng ký ngay</a>
             </p>
         </div>
     </div>

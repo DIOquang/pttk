@@ -212,7 +212,7 @@
                             </td>
                             <td class="status-success">${receipt.status}</td>
                             <td>
-                                <a href="importReceiptDetail?importReceiptID=${receipt.importReceiptID}">
+                                <a href="${pageContext.request.contextPath}/importReceiptDetail?importReceiptID=${receipt.importReceiptID}&startDate=${startDate}&endDate=${endDate}">
                                     View Details
                                 </a>
                             </td>
@@ -234,7 +234,12 @@
             </div>
         </c:if>
 
-        <a href="javascript:history.back()" class="back-link">← Back to Statistics</a>
+        <form action="${pageContext.request.contextPath}/supplierStats" method="post" class="back-link" style="display:inline">
+            <input type="hidden" name="startDate" value="${startDate}"/>
+            <input type="hidden" name="endDate" value="${endDate}"/>
+            <input type="hidden" name="statisticType" value="${empty statisticType ? 'revenue' : statisticType}"/>
+            <button type="submit" style="background:none;border:none;color:#1d90f5;font-weight:600;cursor:pointer;padding:0">← Back to Statistics</button>
+        </form>
     </div>
 
 </body>

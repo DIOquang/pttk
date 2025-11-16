@@ -295,7 +295,7 @@
                                                   type="currency" currencyCode="VND" />
                             </td>
                             <td>
-                                <a href="supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}">
+                                <a href="${pageContext.request.contextPath}/supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}">
                                     View Receipts
                                 </a>
                             </td>
@@ -311,7 +311,7 @@
             </div>
         </c:if>
 
-        <a href="uiMain.jsp" class="back-link">← Back to Main Page</a>
+        <a href="main" class="back-link">← Back to Main Page</a>
     </div>
 
 </body>

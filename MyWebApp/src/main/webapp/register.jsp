@@ -221,7 +221,7 @@
             <button type="submit" class="btn">Register</button>
         </form>
 
-        <a href="login.jsp" class="back-link">← Already have an account? Login here</a>
+        <a href="login" class="back-link">← Already have an account? Login here</a>
     </div>
 
 </body>

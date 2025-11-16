@@ -290,7 +290,7 @@
             </c:if>
         </c:if>
 
-        <a href="javascript:history.back()" class="back-link">← Back to Import Receipts List</a>
+        <a href="${pageContext.request.contextPath}/supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}" class="back-link">← Back to Import Receipts List</a>
     </div>
 
 </body>

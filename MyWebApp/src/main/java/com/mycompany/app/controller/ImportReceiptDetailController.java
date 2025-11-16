@@ -42,6 +42,8 @@ public class ImportReceiptDetailController extends HttpServlet {
         }
         
         String importReceiptID = request.getParameter("importReceiptID");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
         
         if (importReceiptID != null && !importReceiptID.isEmpty()) {
             // Lấy thông tin phiếu nhập
@@ -65,6 +67,10 @@ public class ImportReceiptDetailController extends HttpServlet {
             request.setAttribute("error", "Missing import receipt ID.");
         }
         
+        // Truyền lại khoảng thời gian để quay về danh sách với bối cảnh thống kê
+        if (startDate != null) request.setAttribute("startDate", startDate);
+        if (endDate != null) request.setAttribute("endDate", endDate);
+
         request.getRequestDispatcher("uiImportReceiptDetail.jsp").forward(request, response);
     }
 }

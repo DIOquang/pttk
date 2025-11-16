@@ -227,7 +227,7 @@
         </span>
     </h3>
     <br/>
-    <a href="uiMain.jsp">Quay lại Trang chủ</a>
+    <a href="main">Quay lại Trang chủ</a>
     </div>
 
 </body>

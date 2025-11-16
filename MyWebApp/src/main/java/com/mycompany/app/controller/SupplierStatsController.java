@@ -33,8 +33,7 @@ public class SupplierStatsController extends HttpServlet {
         
         // Check if user is manager
         if (!"manager".equals(userType) || manager == null) {
-            request.setAttribute("error", "Access Denied! Only managers can view statistics.");
-            request.getRequestDispatcher("uiMain.jsp").forward(request, response);
+            response.sendRedirect("main");
             return;
         }
         
@@ -52,8 +51,7 @@ public class SupplierStatsController extends HttpServlet {
         
         // Check if user is manager
         if (!"manager".equals(userType) || manager == null) {
-            request.setAttribute("error", "Access Denied! Only managers can view statistics.");
-            request.getRequestDispatcher("uiMain.jsp").forward(request, response);
+            response.sendRedirect("main");
             return;
         }
         

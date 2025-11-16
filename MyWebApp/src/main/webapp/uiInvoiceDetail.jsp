@@ -246,7 +246,7 @@
         <br/>
         <a href="invoiceList">Back to Invoice List</a>
         <br/>
-        <a href="uiMain.jsp">Back to Homepage</a>
+        <a href="main">Back to Homepage</a>
     </div>
 
 

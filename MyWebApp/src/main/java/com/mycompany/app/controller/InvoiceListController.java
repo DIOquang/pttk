@@ -36,8 +36,7 @@ public class InvoiceListController extends HttpServlet {
         
         // Check if user is customer
         if (!"customer".equals(userType) || customer == null) {
-            request.setAttribute("error", "Access Denied! Only customers can track invoices.");
-            request.getRequestDispatcher("uiMain.jsp").forward(request, response);
+            response.sendRedirect("main");
             return;
         }
         
