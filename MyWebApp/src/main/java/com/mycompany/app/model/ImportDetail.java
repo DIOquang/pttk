@@ -7,7 +7,7 @@ public class ImportDetail {
     private String importDetailID;
     private int quantity;
     private double importPrice;
-    private String importReceiptID;
+    private String importInvoiceID; // đổi từ importReceiptID
     private String productID;
     
     // Thông tin sản phẩm (từ join)
@@ -43,12 +43,12 @@ public class ImportDetail {
         this.importPrice = importPrice;
     }
     
-    public String getImportReceiptID() {
-        return importReceiptID;
+    public String getImportInvoiceID() {
+        return importInvoiceID;
     }
-    
-    public void setImportReceiptID(String importReceiptID) {
-        this.importReceiptID = importReceiptID;
+
+    public void setImportInvoiceID(String importInvoiceID) {
+        this.importInvoiceID = importInvoiceID;
     }
     
     public String getProductID() {

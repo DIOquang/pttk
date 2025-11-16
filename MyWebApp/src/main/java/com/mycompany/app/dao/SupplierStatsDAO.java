@@ -11,12 +11,12 @@ import com.mycompany.app.util.DatabaseUtil;
 
 /**
  * DAO phục vụ thống kê nhà cung cấp (SupplierStatsController)
- * Chức năng: Tổng hợp dữ liệu supplier với phiếu nhập hàng theo khoảng thời gian
+ * Chức năng: Tổng hợp dữ liệu supplier với hóa đơn nhập hàng theo khoảng thời gian
  */
 public class SupplierStatsDAO {
     
     /**
-     * Lấy thống kê các supplier dựa trên ImportReceipt (phiếu nhập hàng)
+     * Lấy thống kê các supplier dựa trên ImportInvoice (hóa đơn nhập từ NCC)
      * KHÔNG dùng Invoice (hóa đơn của khách hàng)
      * 
      * @param startDate Ngày bắt đầu (format: yyyy-MM-dd)

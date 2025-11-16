@@ -295,8 +295,8 @@
                                                   type="currency" currencyCode="VND" />
                             </td>
                             <td>
-                                <a href="supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}">
-                                    View Receipts
+                                <a href="supplierImportInvoices?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}">
+                                    View Import Invoices
                                 </a>
                             </td>
                         </tr>

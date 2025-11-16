@@ -11,55 +11,49 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mycompany.app.dao.SupplierReceiptsDAO;
-import com.mycompany.app.model.ImportReceipt;
+import com.mycompany.app.dao.SupplierInvoicesDAO;
+import com.mycompany.app.model.ImportInvoice;
 import com.mycompany.app.model.Manager;
 import com.mycompany.app.model.Supplier;
 
-@WebServlet("/supplierImportReceipts")
-public class SupplierReceiptsController extends HttpServlet {
-    
-    private SupplierReceiptsDAO supplierReceiptsDAO;
+@WebServlet("/supplierImportInvoices")
+public class SupplierInvoicesController extends HttpServlet {
+
+    private SupplierInvoicesDAO supplierInvoicesDAO;
 
     @Override
     public void init() {
-        supplierReceiptsDAO = new SupplierReceiptsDAO();
+        supplierInvoicesDAO = new SupplierInvoicesDAO();
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String userType = (String) session.getAttribute("userType");
         Manager manager = (Manager) session.getAttribute("manager");
-        
-        // Check if user is manager
+
         if (!"manager".equals(userType) || manager == null) {
-            request.setAttribute("error", "Access Denied! Only managers can view supplier import receipts.");
+            request.setAttribute("error", "Access Denied! Only managers can view supplier import invoices.");
             request.getRequestDispatcher("uiMain.jsp").forward(request, response);
             return;
         }
-        
+
         String supplierID = request.getParameter("supplierID");
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-        
+
         if (supplierID != null && startDate != null && endDate != null) {
-            // Get supplier information
-                Supplier supplier = supplierReceiptsDAO.getSupplierInfo(supplierID);
+            Supplier supplier = supplierInvoicesDAO.getSupplierInfo(supplierID);
             request.setAttribute("supplier", supplier);
-            
-            // Get import receipts for this supplier (NOT invoices)
-                List<ImportReceipt> importReceiptList = supplierReceiptsDAO.getSupplierImportReceipts(supplierID, startDate, endDate);
-            request.setAttribute("importReceiptList", importReceiptList);
-            
-            // Pass date range back to the view
+
+            List<ImportInvoice> importInvoiceList = supplierInvoicesDAO.getSupplierImportInvoices(supplierID, startDate, endDate);
+            request.setAttribute("importInvoiceList", importInvoiceList);
+
             request.setAttribute("startDate", startDate);
             request.setAttribute("endDate", endDate);
         }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("uiReceiptList.jsp");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("uiImportInvoiceList.jsp");
         dispatcher.forward(request, response);
     }
 }
