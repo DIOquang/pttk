@@ -11,54 +11,49 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mycompany.app.dao.SupplierReceiptsDAO;
-import com.mycompany.app.model.ImportReceipt;
+import com.mycompany.app.dao.SupplierInvocieDAO;
+import com.mycompany.app.model.ImportInvocie;
 import com.mycompany.app.model.Manager;
 import com.mycompany.app.model.Supplier;
 
 @WebServlet("/supplierImportReceipts")
-public class SupplierReceiptsController extends HttpServlet {
-    
-    private SupplierReceiptsDAO supplierReceiptsDAO;
+public class SupplierInvocieController extends HttpServlet {
+    private SupplierInvocieDAO supplierReceiptsDAO;
 
     @Override
     public void init() {
-        supplierReceiptsDAO = new SupplierReceiptsDAO();
+        supplierReceiptsDAO = new SupplierInvocieDAO();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
         String userType = (String) session.getAttribute("userType");
         Manager manager = (Manager) session.getAttribute("manager");
-        
-        // Check if user is manager
+
         if (!"manager".equals(userType) || manager == null) {
             response.sendRedirect("main");
             return;
         }
-        
+
         String supplierID = request.getParameter("supplierID");
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-        
+
         if (supplierID != null && startDate != null && endDate != null) {
-            // Get supplier information
-                Supplier supplier = supplierReceiptsDAO.getSupplierInfo(supplierID);
+            Supplier supplier = supplierReceiptsDAO.getSupplierInfo(supplierID);
             request.setAttribute("supplier", supplier);
-            
-            // Get import receipts for this supplier (NOT invoices)
-                List<ImportReceipt> importReceiptList = supplierReceiptsDAO.getSupplierImportReceipts(supplierID, startDate, endDate);
+
+            List<ImportInvocie> importReceiptList = supplierReceiptsDAO.getSupplierImportReceipts(supplierID, startDate, endDate);
             request.setAttribute("importReceiptList", importReceiptList);
-            
-            // Pass date range back to the view
+
             request.setAttribute("startDate", startDate);
             request.setAttribute("endDate", endDate);
         }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("uiReceiptList.jsp");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("uiInvocieList.jsp");
         dispatcher.forward(request, response);
     }
 }
