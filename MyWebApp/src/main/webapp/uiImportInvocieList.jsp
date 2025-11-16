@@ -208,7 +208,7 @@
 							</td>
 							<td>
 								<fmt:formatNumber value="${receipt.totalValue}" 
-												  type="currency" currencyCode="VND" />
+												  type="currency" currencySymbol="$" />
 							</td>
 							<td class="status-success">${receipt.status}</td>
 							<td>
@@ -224,7 +224,7 @@
             
 			<div class="total-summary">
 				Total Receipts: <span>${importReceiptList.size()}</span><br/>
-				Total Value: <span><fmt:formatNumber value="${totalValue}" type="currency" currencyCode="VND" /></span>
+				Total Value: <span><fmt:formatNumber value="${totalValue}" type="currency" currencySymbol="$" /></span>
 			</div>
 		</c:if>
         

@@ -4,8 +4,8 @@
 
 <html>
 <head>
-    <title>Danh sách Hóa đơn</title>
-    <%-- (CSS của bạn vẫn giữ nguyên, không cần thay đổi) --%>
+    <title>Invoice List</title>
+    <%-- (Your CSS remains unchanged) --%>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -48,8 +48,8 @@
             border-radius: 2rem;
             box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.4);
 
-            /* ✅ Căn giữa chính xác */
-            margin: 0 auto;           /* Căn giữa ngang */
+            /* Correctly centered */
+            margin: 0 auto;
             display: flex;            
             flex-direction: column;   
         }
@@ -122,20 +122,20 @@
             box-shadow: 0 0 0 2px #1d90f5;
         }
 
-        /* ===== BẢNG CÓ VIỀN TRẮNG ===== */
+        /* ===== TABLE WITH WHITE BORDER ===== */
         table {
             width: 90%;
             margin: 20px auto;
-            border-collapse: collapse; /* Gộp viền */
-            border: 2px solid #fff; /* Viền trắng ngoài cùng */
+            border-collapse: collapse;
+            border: 2px solid #fff;
             border-radius: 12px;
-            overflow: hidden; /* Bo tròn viền gọn */
-            background: rgba(255, 255, 255, 0.05); /* Nền mờ nhẹ để nổi lên */
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
         }
 
         th, td {
-            border: 1px solid #fff; /* Viền trắng giữa các ô */
+            border: 1px solid #fff;
             padding: 12px 18px;
             text-align: center;
         }
@@ -146,7 +146,7 @@
         }
 
         tr:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng hover */
+            background-color: rgba(255, 255, 255, 0.1);
             transition: 0.2s;
         }
 
@@ -207,7 +207,7 @@
                         <fmt:formatDate value="${inv.creationDate}" pattern="dd-MM-yyyy" />
                     </td>
                     <td>
-                        <fmt:formatNumber value="${inv.totalValue}" type="currency" currencyCode="VND" />
+                        <fmt:formatNumber value="${inv.totalValue}" type="currency" currencySymbol="$" />
                     </td>
                     <td>${inv.status}</td>
                     <td>
@@ -221,13 +221,13 @@
     </table>
 
     <h3 style="text-align: right; width: 90%; margin-right: 5%; padding-top: 15px;">
-        Tổng số tiền đã mua:
+        Total Amount Purchased:
         <span style="color: #1d90f5; font-size: 1.3em; font-weight: bold;">
-            <fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" />
+            <fmt:formatNumber value="${totalAmount}" type="currency" currencySymbol="$" />
         </span>
     </h3>
     <br/>
-    <a href="main">Quay lại Trang chủ</a>
+    <a href="main">Back to Homepage</a>
     </div>
 
 </body>

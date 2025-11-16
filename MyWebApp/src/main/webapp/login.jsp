@@ -151,8 +151,8 @@
         
         <div style="padding-left: 5%; margin-top: 20px;">
             <p style="font-size: 16px; color: #ccc;">
-                Chưa có tài khoản? 
-                <a href="register" style="color: #1d90f5; text-decoration: none; font-weight: 600;">Đăng ký ngay</a>
+                Don't have an account? 
+                <a href="register" style="color: #1d90f5; text-decoration: none; font-weight: 600;">Register now</a>
             </p>
         </div>
     </div>
