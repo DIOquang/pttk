@@ -3,12 +3,12 @@
 
 <html>
 <head>
-    <title>Trang chủ</title>
+    <title>Homepage</title>
    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #525561;
-            color: #eee;       /* Đổi màu chữ cho dễ đọc trên nền đen */
+            color: #eee;       /* Changed text color for readability on dark background */
             line-height: 1.6;
             width: 100vw;
         }
@@ -46,8 +46,8 @@
             border-radius: 2rem;
             box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.4);
 
-            /* ✅ Căn giữa chính xác */
-            margin: 0 auto;           /* Căn giữa ngang */
+            /* Center align */
+            margin: 0 auto;
             display: flex;            
             flex-direction: column;   
         }
@@ -123,7 +123,7 @@
             padding-left: 5%;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* khoảng cách giữa 2 nút */
+            gap: 20px; /* space between buttons */
             margin-top: 30px;
         }
         p{

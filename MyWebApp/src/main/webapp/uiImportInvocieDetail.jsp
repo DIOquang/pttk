@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>Import Receipt Details</title>
+	<title>Import Invoice Details</title>
 	<style>
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,15 +52,15 @@
 
 	<div class="tabs">
 		<h2>Hello, ${sessionScope.manager.logginname}!</h2>
-		<h3>Import Receipt Details</h3>
+		<h3>Import Invoice Details</h3>
 		<c:if test="${not empty error}"><div class="error-message">${error}</div></c:if>
 		<c:if test="${not empty importReceipt}">
 			<div class="info-section">
 				<div class="info-box">
-					<h4>Import Receipt Information</h4>
-					<p><strong>Receipt ID:</strong> ${importReceipt.importReceiptID}</p>
+					<h4>Import Invoice Information</h4>
+					<p><strong>Invoice ID:</strong> ${importReceipt.importReceiptID}</p>
 					<p><strong>Import Date:</strong> <fmt:formatDate value="${importReceipt.importDate}" pattern="dd/MM/yyyy" /></p>
-					<p><strong>Total Value:</strong> <fmt:formatNumber value="${importReceipt.totalValue}" type="currency" currencyCode="VND" /></p>
+					<p><strong>Total Value:</strong> <fmt:formatNumber value="${importReceipt.totalValue}" type="currency" currencySymbol="$" /></p>
 					<p><strong>Status:</strong> <span class="status-badge status-success">${importReceipt.status}</span></p>
 				</div>
 				<c:if test="${not empty supplier}">
@@ -95,23 +95,23 @@
 								<td class="product-name">${detail.productName}</td>
 								<td>${detail.productDescription}</td>
 								<td>${detail.quantity}</td>
-								<td class="number-cell"><fmt:formatNumber value="${detail.importPrice}" type="currency" currencyCode="VND" /></td>
-								<td class="number-cell"><fmt:formatNumber value="${detail.subTotal}" type="currency" currencyCode="VND" /></td>
+								<td class="number-cell"><fmt:formatNumber value="${detail.importPrice}" type="currency" currencySymbol="$" /></td>
+								<td class="number-cell"><fmt:formatNumber value="${detail.subTotal}" type="currency" currencySymbol="$" /></td>
 							</tr>
 							<c:set var="totalAmount" value="${totalAmount + detail.subTotal}" />
 						</c:forEach>
 						<tr class="total-row">
 							<td colspan="6">TOTAL</td>
-							<td class="number-cell"><fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" /></td>
+							<td class="number-cell"><fmt:formatNumber value="${totalAmount}" type="currency" currencySymbol="$" /></td>
 						</tr>
 					</tbody>
 				</table>
 			</c:if>
 			<c:if test="${empty importDetails}">
-				<div class="error-message">No product details found for this import receipt.</div>
+				<div class="error-message">No product details found for this import invoice.</div>
 			</c:if>
 		</c:if>
-		<a href="${pageContext.request.contextPath}/supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}" class="back-link">← Back to Import Receipts List</a>
+		<a href="${pageContext.request.contextPath}/supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}" class="back-link">← Back to Import Invoices List</a>
 	</div>
 
 </body>

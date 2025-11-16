@@ -18,7 +18,6 @@ CREATE TRIGGER after_orderdetail_insert
 AFTER INSERT ON OrderDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalAmount của Order
     UPDATE `Order`
     SET totalAmount = (
         SELECT COALESCE(SUM(quantity * unitPrice), 0)
@@ -27,7 +26,6 @@ BEGIN
     )
     WHERE orderID = NEW.orderID;
     
-    -- Cập nhật totalValue của Invoice nếu đã có invoice
     UPDATE Invoice
     SET totalValue = (
         SELECT totalAmount
@@ -42,7 +40,6 @@ CREATE TRIGGER after_orderdetail_update
 AFTER UPDATE ON OrderDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalAmount của Order
     UPDATE `Order`
     SET totalAmount = (
         SELECT COALESCE(SUM(quantity * unitPrice), 0)
@@ -51,7 +48,6 @@ BEGIN
     )
     WHERE orderID = NEW.orderID;
     
-    -- Cập nhật totalValue của Invoice
     UPDATE Invoice
     SET totalValue = (
         SELECT totalAmount
@@ -66,7 +62,6 @@ CREATE TRIGGER after_orderdetail_delete
 AFTER DELETE ON OrderDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalAmount của Order
     UPDATE `Order`
     SET totalAmount = (
         SELECT COALESCE(SUM(quantity * unitPrice), 0)
@@ -75,7 +70,6 @@ BEGIN
     )
     WHERE orderID = OLD.orderID;
     
-    -- Cập nhật totalValue của Invoice
     UPDATE Invoice
     SET totalValue = (
         SELECT totalAmount
@@ -94,7 +88,6 @@ CREATE TRIGGER after_importdetail_insert
 AFTER INSERT ON ImportDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalValue của ImportReceipt
     UPDATE ImportReceipt
     SET totalValue = (
         SELECT COALESCE(SUM(quantity * importPrice), 0)
@@ -109,7 +102,6 @@ CREATE TRIGGER after_importdetail_update
 AFTER UPDATE ON ImportDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalValue của ImportReceipt
     UPDATE ImportReceipt
     SET totalValue = (
         SELECT COALESCE(SUM(quantity * importPrice), 0)
@@ -124,7 +116,6 @@ CREATE TRIGGER after_importdetail_delete
 AFTER DELETE ON ImportDetail
 FOR EACH ROW
 BEGIN
-    -- Cập nhật totalValue của ImportReceipt
     UPDATE ImportReceipt
     SET totalValue = (
         SELECT COALESCE(SUM(quantity * importPrice), 0)

@@ -9,7 +9,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #525561;
-            color: #eee;       /* Đổi màu chữ cho dễ đọc trên nền đen */
+            color: #eee;       /* Changed text color for readability on dark background */
             line-height: 1.6;
             width: 100vw;
         }
@@ -47,8 +47,8 @@
             border-radius: 2rem;
             box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.4);
 
-            /* ✅ Căn giữa chính xác */
-            margin: 0 auto;           /* Căn giữa ngang */
+            /* Center align */
+            margin: 0 auto;
             display: flex;            
             flex-direction: column;   
         }
@@ -121,20 +121,20 @@
             box-shadow: 0 0 0 2px #1d90f5;
         }
 
-        /* ===== BẢNG CÓ VIỀN TRẮNG ===== */
+        /* ===== TABLE WITH WHITE BORDER ===== */
         table {
             width: 90%;
             margin: 20px auto;
-            border-collapse: collapse; /* Gộp viền */
-            border: 2px solid #fff; /* Viền trắng ngoài cùng */
+            border-collapse: collapse; /* Merge borders */
+            border: 2px solid #fff; /* Outermost white border */
             border-radius: 12px;
-            overflow: hidden; /* Bo tròn viền gọn */
-            background: rgba(255, 255, 255, 0.05); /* Nền mờ nhẹ để nổi lên */
+            overflow: hidden; /* Keep border radius neat */
+            background: rgba(255, 255, 255, 0.05); /* Light transparent background */
             color: #fff;
         }
 
         th, td {
-            border: 1px solid #fff; /* Viền trắng giữa các ô */
+            border: 1px solid #fff; /* White border between cells */
             padding: 12px 18px;
             text-align: center;
         }
@@ -145,7 +145,7 @@
         }
 
         tr:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng hover */
+            background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
             transition: 0.2s;
         }
 
@@ -196,7 +196,7 @@
                     </div>
                     <div>
                         <strong>Status:</strong> 
-                        <span style="color: ${invoice.status == 'Da thanh toan' ? '#4CAF50' : '#FFA500'}; font-weight: bold;">
+                        <span style="color: ${invoice.status == 'Paid' ? '#4CAF50' : '#FFA500'}; font-weight: bold;">
                             ${invoice.status}
                         </span>
                     </div>
@@ -207,7 +207,7 @@
                     <div>
                         <strong>Total Value:</strong> 
                         <span style="color: #1d90f5; font-weight: bold;">
-                            <fmt:formatNumber value="${invoice.totalValue}" type="currency" currencyCode="VND" />
+                            <fmt:formatNumber value="${invoice.totalValue}" type="currency" currencySymbol="$" />
                         </span>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
         <table id="invoiceDetail">
             <thead>
                 <tr>
-                    <th>Order Name</th>
+                    <th>Product Name</th>
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Unit Price</th>
@@ -233,10 +233,10 @@
                         <td>${item.product.description}</td>
                         <td>${item.quantity}</td>
                         <td>
-                            <fmt:formatNumber value="${item.unitPrice}" type="currency" currencyCode="VND" />
+                            <fmt:formatNumber value="${item.unitPrice}" type="currency" currencySymbol="$" />
                         </td>
                         <td>
-                            <fmt:formatNumber value="${item.unitPrice * item.quantity}" type="currency" currencyCode="VND" />
+                            <fmt:formatNumber value="${item.unitPrice * item.quantity}" type="currency" currencySymbol="$" />
                         </td>
                     </tr>
                 </c:forEach>

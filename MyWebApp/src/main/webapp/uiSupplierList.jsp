@@ -292,11 +292,11 @@
                             <td>${supplier.totalOrders}</td>
                             <td>
                                 <fmt:formatNumber value="${supplier.totalRevenue}" 
-                                                  type="currency" currencyCode="VND" />
+                                                  type="currency" currencySymbol="$" />
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/supplierImportReceipts?supplierID=${supplier.supplierID}&startDate=${startDate}&endDate=${endDate}">
-                                    View Receipts
+                                    View Invoices
                                 </a>
                             </td>
                         </tr>

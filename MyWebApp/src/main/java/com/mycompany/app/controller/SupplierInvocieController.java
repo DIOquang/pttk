@@ -53,7 +53,7 @@ public class SupplierInvocieController extends HttpServlet {
             request.setAttribute("endDate", endDate);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("uiInvocieList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("uiImportInvocieList.jsp");
         dispatcher.forward(request, response);
     }
 }
